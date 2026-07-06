@@ -63,7 +63,29 @@ block content
                             name="mobile"
                             value=employee.mobile
                         )
+                        
+                    .col-md-6.mb-3
+                        label Branch
 
+                        select.form-control(name="branch_id")
+                            option(value="") Select Branch
+                            each branch in branches
+                                option(
+                                    value=branch.branch_id
+                                    selected=employee.branch_id == branch.branch_id
+                                )= branch.branch_name
+                                
+                    .col-md-6.mb-3
+                        label Department
+
+                        select.form-control(name="department_id")
+                            option(value="") Select Department
+                            each department in departments
+                                option(
+                                    value=department.department_id
+                                    selected=employee.department_id == department.department_id
+                                )= department.department_name
+                    
                     .col-md-6.mb-3
                         label.form-label Designation
 
