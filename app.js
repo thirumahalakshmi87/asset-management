@@ -38,6 +38,8 @@ app.use(session({
 
 app.use(flash());
 
+
+
 app.use((req, res, next) => {
 
     res.locals.success = req.flash('success');
@@ -59,6 +61,10 @@ app.use(vendorRoutes);
 
 app.use('/', assetTransactionRoutes);
 app.use(assetRoutes);
+
+app.get('/', (req, res) => {
+    res.redirect('/login');
+});
 
 /*app.get('/',(req,res)=>{
 
