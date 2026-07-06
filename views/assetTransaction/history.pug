@@ -1,0 +1,105 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+
+        h2 Asset History
+
+        a.btn.btn-secondary(href="/assets")
+            | Back
+
+
+    .card.mb-4
+
+        .card-body
+
+            h4
+                = asset.asset_code + ' - ' + asset.asset_name
+
+            p
+                strong Purchase Date:
+                |  #{asset.purchase_date}
+
+            p
+                strong Purchase Price:
+                |  #{asset.purchase_price}
+
+            p
+                strong Current Status:
+                |  #{asset.asset_status}
+
+
+    .card.mb-4
+
+        .card-body
+
+            h4 Transaction History
+
+            table.table.table-bordered
+
+                thead.table-dark
+
+                    tr
+
+                        th Issue Date
+
+                        th Expected Return
+
+                        th Return Date
+
+                        th Status
+
+                        th Remarks
+
+
+                tbody
+
+                    each transaction in transactions
+
+                        tr
+
+                            td= transaction.issue_date
+
+                            td= transaction.expected_return_date || '-'
+
+                            td= transaction.return_date || '-'
+
+                            td= transaction.transaction_status
+
+                            td= transaction.remarks || '-'
+
+
+    if scrap
+
+        .card
+
+            .card-body
+
+                h4 Scrap Details
+
+                table.table.table-bordered
+
+                    tr
+
+                        th Scrap Date
+
+                        td= scrap.scrap_date
+
+                    tr
+
+                        th Reason
+
+                        td= scrap.scrap_reason
+
+                    tr
+
+                        th Scrap Value
+
+                        td= scrap.scrap_value || '-'
+
+                    tr
+
+                        th Remarks
+
+                        td= scrap.remarks || '-'

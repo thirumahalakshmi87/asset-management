@@ -1,0 +1,70 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Category Master
+
+        a.btn.btn-primary(href="/assetCategories/add")
+            | Add Category
+
+    if success && success.length
+        .alert.alert-success
+            = success
+
+    if error && error.length
+        .alert.alert-danger
+            = error
+
+    .card
+        .card-body
+
+            .table-responsive
+
+                table.table.table-bordered.table-striped.data-table
+                    thead.table-dark
+                        tr
+                            th Category Code
+                            th Category Name
+                            th Description
+                            th Status
+                            th Actions
+
+                    tbody
+
+                        each category in assetCategories
+
+                            tr
+                                td= category.category_code
+
+                                td= category.category_name || '-'
+
+                                td= category.description || '-'
+
+                                
+                                td
+                                    if category.is_active
+                                        span.badge.bg-success Active
+                                    else
+                                        span.badge.bg-danger Inactive
+
+                                td
+                                    a.btn.btn-sm.btn-info.me-1(
+                                        href=`/assetCategories/${category.category_id}`
+                                    )
+                                        | View
+
+                                    a.btn.btn-sm.btn-warning.me-1(
+                                        href=`/assetCategories/${category.category_id}/edit`
+                                    )
+                                        | Edit
+
+                                    form.d-inline(
+                                        action=`/assetCategories/${category.category_id}/delete`
+                                        method="POST"
+                                        onsubmit="return confirm('Delete this Category?')"
+                                    )
+                                        button.btn.btn-sm.btn-danger(
+                                            type="submit"
+                                        )
+                                            | Delete

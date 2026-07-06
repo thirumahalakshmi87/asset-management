@@ -1,0 +1,152 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Edit Employee
+
+        a.btn.btn-secondary(href="/assets")
+            | Back
+
+    .card
+        .card-body
+
+            form(
+                action=`/assets/${asset.asset_id}`
+                method="POST"
+            )
+
+                .row
+
+                    .col-md-6.mb-3
+                        label.form-label Asset Code
+
+                        input.form-control(
+                            type="text"
+                            name="asset_code"
+                            value=asset.asset_code
+                            required
+                        )
+                    .col-md-6.mb-3
+                        label.form-label Serial Number
+
+                        input.form-control(
+                            type="text"
+                            name="serial_number"
+                            value=asset.serial_number
+                            required
+                        )
+                    .col-md-6.mb-3
+                        label.form-label Asset Name
+
+                        input.form-control(
+                            type="text"
+                            name="asset_name"
+                            value=asset.asset_name
+                            required
+                        )
+                    .col-md-6.mb-3
+                        label.form-label Category
+
+                        select.form-select(
+                            name="category_id"
+                            required
+                        )
+                            option(value="") Select Category
+
+                            each category in categories
+                                option(
+                                    value=category.category_id
+                                    selected=asset.category_id === category.category_id
+                                )= category.category_name
+
+                    .col-md-6.mb-3
+                        label.form-label Vendor
+
+                        select.form-select(
+                            name="vendor_id"
+                            required
+                        )
+                            option(value="") Select Vendor
+
+                            each vendor in vendors
+                                option(
+                                    value=vendor.vendor_id
+                                    selected=asset.vendor_id === vendor.vendor_id
+                                )= vendor.vendor_name
+
+                    .col-md-6.mb-3
+                        label.form-label Branch
+
+                        select.form-select(
+                            name="branch_id"
+                            required
+                        )
+                            option(value="") Select Branch
+
+                            each branch in branches
+                                option(
+                                    value=branch.branch_id
+                                    selected=asset.branch_id === branch.branch_id
+                                )= branch.branch_name
+                    .col-md-6.mb-3
+                        label.form-label Make
+
+                        input.form-control(
+                            type="text"
+                            name="make"
+                            value=asset.make                            
+                        )
+                    .col-md-6.mb-3
+                        label.form-label Model
+
+                        input.form-control(
+                            type="text"
+                            name="model"
+                            value=asset.model
+                            
+                        )       
+                    .col-md-6.mb-3
+                        label.form-label Purchase Date
+
+                        input.form-control(
+                            type="date"
+                            name="purchase_date"
+                            value=asset.purchase_date
+                            required
+                        )
+                    .col-md-6.mb-3
+                        label.form-label Purchase Price
+
+                        input.form-control(
+                            type="number"
+                            name="purchase_price"
+                            value=asset.purchase_price
+                            required
+                        )
+                    .col-md-6.mb-3
+                        label.form-label Warranty Expiry
+
+                        input.form-control(
+                            type="date"
+                            name="warranty_expiry"
+                            value=asset.warranty_expiry
+                            required
+                        )
+                    .col-md-6.mb-3
+                        label.form-label Remarks
+
+                        input.form-control(
+                            type="text"
+                            name="remarks"
+                            value=asset.remarks
+                            required
+                        )
+                    .col-md-6.mb-3
+                        label.form-label Status
+
+                        select.form-select(name="is_active")
+                            option(value="true") Active
+                            option(value="false") Inactive  
+                button.btn.btn-primary(type="submit")
+                    | Update Asset                          

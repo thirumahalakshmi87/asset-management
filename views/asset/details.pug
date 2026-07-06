@@ -1,0 +1,56 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Asset Details
+
+        a.btn.btn-secondary(href="/assets")
+            | Back
+
+    .card
+        .card-body
+            
+            table.table.table-bordered               
+
+                tr
+                    th Asset Code
+                    td= asset.asset_code
+
+                tr
+                    th Serial Number
+                    td= asset.serial_number || '-'
+                
+                tr
+                    th Asset Name
+                    td= asset.asset_name || '-'
+                tr
+                    th Category
+                    td= asset.category_id || '-'        
+                tr
+                    th Vendor
+                    td= asset.vendor_id || '-'
+                tr
+                    th Branch
+                    td= asset.branch_id || '-'
+                tr
+                    th Makeh
+                    td= asset.make || '-'
+                tr
+                    th Model
+                    td= asset.model || '-'
+                tr
+                    th Purchase Date
+                    td= asset.purchase_date || '-'
+                tr
+                    th Purchase Price
+                    td= asset.purchase_price || '-'     
+                tr
+                    th Warranty Expiry
+                    td= asset.warranty_expiry || '-'            
+                tr
+                    th Status
+                    td= asset.asset_status || '-'       
+                tr
+                    th Remarks
+                    td= asset.remarks || '-'        

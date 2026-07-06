@@ -1,0 +1,94 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Edit Employee
+
+        a.btn.btn-secondary(href="/employees")
+            | Back
+
+    .card
+        .card-body
+
+            form(
+                action=`/employees/${employee.employee_id}`
+                method="POST"
+            )
+
+                .row
+
+                    .col-md-6.mb-3
+                        label.form-label Employee Code
+
+                        input.form-control(
+                            type="text"
+                            value=employee.employee_code
+                            readonly
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label First Name
+
+                        input.form-control(
+                            type="text"
+                            name="first_name"
+                            value=employee.first_name
+                            required
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Last Name
+
+                        input.form-control(
+                            type="text"
+                            name="last_name"
+                            value=employee.last_name
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Email
+
+                        input.form-control(
+                            type="email"
+                            name="email"
+                            value=employee.email
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Mobile
+
+                        input.form-control(
+                            type="text"
+                            name="mobile"
+                            value=employee.mobile
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Designation
+
+                        input.form-control(
+                            type="text"
+                            name="designation"
+                            value=employee.designation
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Status
+
+                        select.form-select(name="status")
+
+                            option(
+                                value="true"
+                                selected=employee.status
+                            )
+                                | Active
+
+                            option(
+                                value="false"
+                                selected=!employee.status
+                            )
+                                | Inactive
+
+                button.btn.btn-primary(type="submit")
+                    | Update Employee

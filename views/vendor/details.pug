@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Vendor Details
+
+        a.btn.btn-secondary(href="/vendors")
+            | Back
+
+    .card
+        .card-body
+
+            table.table.table-bordered               
+
+                tr
+                    th Vendor Name
+                    td= vendor.vendor_name
+
+                tr
+                    th Contact Persion
+                    td= vendor.contact_person || '-'
+                
+                tr
+                    th Mobile
+                    td= vendor.mobile || '-'
+                tr
+                    th Email
+                    td= vendor.email || '-'        
+                tr
+                    th address
+                    td= vendor.address || '-'           

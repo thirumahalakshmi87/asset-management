@@ -1,0 +1,52 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Add Employee
+
+        a.btn.btn-secondary(href="/assetCategories")
+            | Back
+
+    .card
+        .card-body
+
+            form(action="/assetCategories" method="POST")
+
+                .row
+
+                    .col-md-6.mb-3
+                        label.form-label Category Code
+
+                        input.form-control(
+                            type="text"
+                            name="category_code"
+                            required
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Category Name
+
+                        input.form-control(
+                            type="text"
+                            name="category_name"
+                            required
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Desscription
+
+                        input.form-control(
+                            type="text"
+                            name="description"
+                        )
+                                        
+                    .col-md-6.mb-3
+                        label.form-label Status
+
+                        select.form-select(name="is_active")
+                            option(value="true") Active
+                            option(value="false") Inactive
+
+                button.btn.btn-primary(type="submit")
+                    | Save Category

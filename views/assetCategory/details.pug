@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Category Details
+
+        a.btn.btn-secondary(href="/assetCategories")
+            | Back
+
+    .card
+        .card-body
+
+            table.table.table-bordered
+
+                tr
+                    th Category Code
+                    td= assetCategory.category_code
+
+                tr
+                    th Category Name
+                    td= assetCategory.category_name
+
+                tr
+                    th Description
+                    td= assetCategory.description || '-'
+                
+                tr
+                    th Status
+                    td
+                        if assetCategory.is_active
+                            span.badge.bg-success Active
+                        else
+                            span.badge.bg-danger Inactive

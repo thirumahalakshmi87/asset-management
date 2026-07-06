@@ -1,0 +1,65 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Vendor Master
+
+        a.btn.btn-primary(href="/vendors/add")
+            | Add Vendor
+
+    if success && success.length
+        .alert.alert-success
+            = success
+
+    if error && error.length
+        .alert.alert-danger
+            = error
+
+    .card
+        .card-body
+
+            .table-responsive
+
+                table.table.table-bordered.table-striped.data-table
+                    thead.table-dark
+                        tr                            
+                            th Vendor Name
+                            th Contact Person
+                            th Email
+                            th Mobile
+                            th Addres                           
+                            th Actions
+
+                    tbody
+
+                        each vendor in vendors
+
+                            tr
+                                td= vendor.vendor_name
+
+                                td= vendor.contact_person || '-'
+
+                                td= vendor.email || '-'
+                                td= vendor.mobile || '-'
+                                td= vendor.address || '-'                               
+                                td
+                                    a.btn.btn-sm.btn-info.me-1(
+                                        href=`/vendors/${vendor.vendor_id}`
+                                    )
+                                        | View
+
+                                    a.btn.btn-sm.btn-warning.me-1(
+                                        href=`/vendors/${vendor.vendor_id}/edit`
+                                    )
+                                        | Edit
+
+                                    form.d-inline(
+                                        action=`/vendors/${vendor.vendor_id}/delete`
+                                        method="POST"
+                                        onsubmit="return confirm('Delete this Vendor?')"
+                                    )
+                                        button.btn.btn-sm.btn-danger(
+                                            type="submit"
+                                        )
+                                            | Delete

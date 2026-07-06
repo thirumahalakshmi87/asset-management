@@ -1,0 +1,74 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Asset Master
+
+        a.btn.btn-primary(href="/assets/add")
+            | Add Asset
+
+    if success && success.length
+        .alert.alert-success
+            = success
+
+    if error && error.length
+        .alert.alert-danger
+            = error
+
+    .card
+        .card-body
+
+            .table-responsive
+                
+                table.table.table-bordered.table-striped.data-table
+                    thead.table-dark
+                        tr                            
+                            th Asset Code
+                            th Asset Name
+                            th Serial Number
+                            th Make
+                            th Model
+                            th Category                           
+                            th Vendor
+                            th Branch
+                            th Actions
+
+                    tbody
+
+                        each asset in assets
+
+                            tr
+                                td= asset.asset_code
+
+                                td= asset.asset_name || '-'
+                                td= asset.serial_number || '-'                               
+                                td= asset.make || '-'
+                                td= asset.model || '-'
+                                td= asset.category ? asset.category.category_name : '-'
+                                td= asset.vendor ? asset.vendor.vendor_name : '-'
+                                td= asset.branch ? asset.branch.branch_name : '-'                          
+                                td
+                                    a.btn.btn-sm.btn-secondary.me-1(
+                                        href=`/assets/${asset.asset_id}/history`
+                                    )
+                                        | History
+                                    a.btn.btn-sm.btn-info.me-1(
+                                        href=`/assets/${asset.asset_id}`
+                                    )
+                                        | View
+
+                                    a.btn.btn-sm.btn-warning.me-1(
+                                        href=`/assets/${asset.asset_id}/edit`
+                                    )
+                                        | Edit
+
+                                    form.d-inline(
+                                        action=`/assets/${asset.asset_id}/delete`
+                                        method="POST"
+                                        onsubmit="return confirm('Delete this Vendor?')"
+                                    )
+                                        button.btn.btn-sm.btn-danger(
+                                            type="submit"
+                                        )
+                                            | Delete

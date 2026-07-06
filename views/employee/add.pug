@@ -1,0 +1,76 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Add Employee
+
+        a.btn.btn-secondary(href="/employees")
+            | Back
+
+    .card
+        .card-body
+
+            form(action="/employees" method="POST")
+
+                .row
+
+                    .col-md-6.mb-3
+                        label.form-label Employee Code
+
+                        input.form-control(
+                            type="text"
+                            name="employee_code"
+                            required
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label First Name
+
+                        input.form-control(
+                            type="text"
+                            name="first_name"
+                            required
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Last Name
+
+                        input.form-control(
+                            type="text"
+                            name="last_name"
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Email
+
+                        input.form-control(
+                            type="email"
+                            name="email"
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Mobile
+
+                        input.form-control(
+                            type="text"
+                            name="mobile"
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Designation
+
+                        input.form-control(
+                            type="text"
+                            name="designation"
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Status
+
+                        select.form-select(name="status")
+                            option(value="true") Active
+                            option(value="false") Inactive
+
+                button.btn.btn-primary(type="submit")
+                    | Save Employee

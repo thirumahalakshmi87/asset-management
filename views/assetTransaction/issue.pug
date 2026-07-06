@@ -1,0 +1,99 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+
+        h2 Issue Asset
+
+        a.btn.btn-secondary(href="/assets")
+            | Back
+
+
+    .card
+
+        .card-body
+
+            form(
+                action="/assets/issue"
+                method="POST"
+            )
+
+                .row
+
+
+                    .col-md-6.mb-3
+
+                        label.form-label Asset
+
+                        select.form-select(
+                            name="asset_id"
+                            required
+                        )
+
+                            option(value="")
+                                | Select Asset
+
+                            each asset in assets
+
+                                option(
+                                    value=asset.asset_id
+                                )
+                                    = asset.asset_code + ' - ' + asset.asset_name
+
+
+                    .col-md-6.mb-3
+
+                        label.form-label Employee
+
+                        select.form-select(
+                            name="employee_id"
+                            required
+                        )
+
+                            option(value="")
+                                | Select Employee
+
+                            each employee in employees
+
+                                option(
+                                    value=employee.employee_id
+                                )
+                                    = employee.employee_code + ' - ' + employee.first_name + ' ' + (employee.last_name || '')
+
+
+                    .col-md-6.mb-3
+
+                        label.form-label Issue Date
+
+                        input.form-control(
+                            type="date"
+                            name="issue_date"
+                            required
+                        )
+
+
+                    .col-md-6.mb-3
+
+                        label.form-label Expected Return Date
+
+                        input.form-control(
+                            type="date"
+                            name="expected_return_date"
+                        )
+
+
+                    .col-md-12.mb-3
+
+                        label.form-label Remarks
+
+                        textarea.form-control(
+                            name="remarks"
+                            rows="3"
+                        )
+
+
+                button.btn.btn-primary(
+                    type="submit"
+                )
+                    | Issue Asset

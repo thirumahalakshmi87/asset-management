@@ -1,0 +1,67 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Edit Employee
+
+        a.btn.btn-secondary(href="/assetCategories")
+            | Back
+
+    .card
+        .card-body
+
+            form(
+                action=`/assetCategories/${assetCategory.category_id}`
+                method="POST"
+            )
+
+                .row
+
+                    .col-md-6.mb-3
+                        label.form-label Category Code
+
+                        input.form-control(
+                            type="text"
+                            value=assetCategory.category_code
+                            readonly
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Category Name
+
+                        input.form-control(
+                            type="text"
+                            name="category_name"
+                            value=assetCategory.category_name
+                            required
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Description
+
+                        input.form-control(
+                            type="text"
+                            name="description"
+                            value=assetCategory.description
+                        )                                                                                     
+
+                    .col-md-6.mb-3
+                        label.form-label Status
+
+                        select.form-select(name="is_active")
+
+                            option(
+                                value="true"
+                                selected=assetCategory.is_active
+                            )
+                                | Active
+
+                            option(
+                                value="false"
+                                selected=!assetCategory.is_active
+                            )
+                                | Inactive
+
+                button.btn.btn-primary(type="submit")
+                    | Update Category

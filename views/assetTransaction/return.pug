@@ -1,0 +1,89 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+
+        h2 Return Asset
+
+        a.btn.btn-secondary(href="/assets")
+            | Back
+
+
+    .card
+
+        .card-body
+
+            form(
+                action="/assets/return"
+                method="POST"
+            )
+
+                .row
+
+
+                    .col-md-6.mb-3
+
+                        label.form-label Issued Asset
+
+                        select.form-select(
+                            name="transaction_id"
+                            required
+                        )
+
+                            option(value="")
+                                | Select Asset
+
+                            each transaction in transactions
+
+                                option(
+                                    value=transaction.transaction_id
+                                )
+                                    = transaction.asset_name
+
+
+                    .col-md-6.mb-3
+
+                        label.form-label Return Date
+
+                        input.form-control(
+                            type="date"
+                            name="return_date"
+                            required
+                        )
+
+
+                    .col-md-6.mb-3
+
+                        label.form-label Return Reason
+
+                        select.form-select(
+                            name="reason_id"
+                            required
+                        )
+
+                            option(value="")
+                                | Select Reason
+
+                            each reason in reasons
+
+                                option(
+                                    value=reason.reason_id
+                                )
+                                    = reason.reason_name
+
+
+                    .col-md-12.mb-3
+
+                        label.form-label Remarks
+
+                        textarea.form-control(
+                            name="remarks"
+                            rows="3"
+                        )
+
+
+                button.btn.btn-primary(
+                    type="submit"
+                )
+                    | Return Asset

@@ -1,0 +1,93 @@
+extends layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Dashboard
+
+
+    .row.g-3.mb-4
+
+
+        .col-md-3
+
+            .card.h-100
+
+                .card-body
+
+                    h5.card-title Total Assets
+
+                    h2= totalAssets
+
+
+        .col-md-3
+
+            .card.h-100
+
+                .card-body
+
+                    h5.card-title Available Assets
+
+                    h2= availableAssets
+
+
+        .col-md-3
+
+            .card.h-100
+
+                .card-body
+
+                    h5.card-title Issued Assets
+
+                    h2= issuedAssets
+
+
+        .col-md-3
+
+            .card.h-100
+
+                .card-body
+
+                    h5.card-title Scrapped Assets
+
+                    h2= scrappedAssets
+
+
+
+    .row.g-3
+
+
+        .col-md-4
+
+            .card.h-100
+
+                .card-body
+
+                    h5.card-title Total Asset Value
+
+                    h2
+                        | ₹#{totalValue.toFixed(2)}
+
+
+        .col-md-4
+
+            .card.h-100
+
+                .card-body
+
+                    h5.card-title Available Stock Value
+
+                    h2
+                        | ₹#{availableValue.toFixed(2)}
+
+
+        .col-md-4
+
+            .card.h-100
+
+                .card-body
+
+                    h5.card-title Issued Asset Value
+
+                    h2
+                        | ₹#{issuedValue.toFixed(2)}

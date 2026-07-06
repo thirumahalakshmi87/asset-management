@@ -1,0 +1,96 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Edit Employee
+
+        a.btn.btn-secondary(href="/branches")
+            | Back
+
+    .card
+        .card-body
+
+            form(
+                action=`/branches/${branch.branch_id}`
+                method="POST"
+            )
+
+                .row
+
+                    .col-md-6.mb-3
+                        label.form-label Branch Code
+
+                        input.form-control(
+                            type="text"
+                            value=branch.branch_code
+                            readonly
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Branch Name
+
+                        input.form-control(
+                            type="text"
+                            name="branch_name"
+                            value=branch.branch_name
+                            required
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label Address
+
+                        input.form-control(
+                            type="text"
+                            name="address"
+                            value=branch.address
+                        )
+                        
+                    .col-md-6.mb-3
+                        label.form-label City
+
+                        input.form-control(
+                            type="text"
+                            name="city"
+                            value=branch.city
+                        )
+
+                    .col-md-6.mb-3
+                        label.form-label State
+
+                        input.form-control(
+                            type="text"
+                            name="state"
+                            value=branch.state
+                        )
+                    
+                    .col-md-6.mb-3
+                        label.form-label Country
+
+                        input.form-control(
+                            type="text"
+                            name="country"
+                            value=branch.country
+                        )
+                        
+                    
+
+                    .col-md-6.mb-3
+                        label.form-label Status
+
+                        select.form-select(name="is_active")
+
+                            option(
+                                value="true"
+                                selected=branch.is_active
+                            )
+                                | Active
+
+                            option(
+                                value="false"
+                                selected=!branch.is_active
+                            )
+                                | Inactive
+
+                button.btn.btn-primary(type="submit")
+                    | Update Branch

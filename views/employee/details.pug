@@ -1,0 +1,46 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Employee Details
+
+        a.btn.btn-secondary(href="/employees")
+            | Back
+
+    .card
+        .card-body
+
+            table.table.table-bordered
+
+                tr
+                    th Employee Code
+                    td= employee.employee_code
+
+                tr
+                    th First Name
+                    td= employee.first_name
+
+                tr
+                    th Last Name
+                    td= employee.last_name || '-'
+
+                tr
+                    th Email
+                    td= employee.email || '-'
+
+                tr
+                    th Mobile
+                    td= employee.mobile || '-'
+
+                tr
+                    th Designation
+                    td= employee.designation || '-'
+
+                tr
+                    th Status
+                    td
+                        if employee.status
+                            span.badge.bg-success Active
+                        else
+                            span.badge.bg-danger Inactive

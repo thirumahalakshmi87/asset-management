@@ -1,0 +1,75 @@
+extends ../layout
+
+block content
+
+    .d-flex.justify-content-between.align-items-center.mb-4
+        h2 Employee Master
+
+        a.btn.btn-primary(href="/employees/add")
+            | Add Employee
+
+    if success && success.length
+        .alert.alert-success
+            = success
+
+    if error && error.length
+        .alert.alert-danger
+            = error
+
+    .card
+        .card-body
+
+            .table-responsive
+
+                table.table.table-bordered.table-striped.data-table
+                    thead.table-dark
+                        tr
+                            th Employee Code
+                            th Name
+                            th Email
+                            th Mobile
+                            th Designation
+                            th Status
+                            th Actions
+
+                    tbody
+
+                        each employee in employees
+
+                            tr
+                                td= employee.employee_code
+
+                                td= employee.first_name + ' ' + (employee.last_name || '')
+
+                                td= employee.email || '-'
+
+                                td= employee.mobile || '-'
+
+                                td= employee.designation || '-'
+
+                                td
+                                    if employee.status
+                                        span.badge.bg-success Active
+                                    else
+                                        span.badge.bg-danger Inactive
+
+                                td
+                                    a.btn.btn-sm.btn-info.me-1(
+                                        href=`/employees/${employee.employee_id}`
+                                    )
+                                        | View
+
+                                    a.btn.btn-sm.btn-warning.me-1(
+                                        href=`/employees/${employee.employee_id}/edit`
+                                    )
+                                        | Edit
+
+                                    form.d-inline(
+                                        action=`/employees/${employee.employee_id}/delete`
+                                        method="POST"
+                                        onsubmit="return confirm('Delete this employee?')"
+                                    )
+                                        button.btn.btn-sm.btn-danger(
+                                            type="submit"
+                                        )
+                                            | Delete
