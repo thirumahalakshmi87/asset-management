@@ -51,6 +51,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/', (req, res) => {
+    res.redirect('/login');
+});
+
 app.use(authRoutes);
 app.use(dashboardRoutes);
 app.use(employeeRoutes);
@@ -62,9 +66,7 @@ app.use(vendorRoutes);
 app.use('/', assetTransactionRoutes);
 app.use(assetRoutes);
 
-app.get('/', (req, res) => {
-    res.redirect('/login');
-});
+
 
 /*app.get('/',(req,res)=>{
 
