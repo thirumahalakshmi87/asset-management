@@ -1,11 +1,3 @@
---
--- PostgreSQL database dump
---
-
-\restrict GZ10bnAAgzeBnK01zGdpO6uyTT1gWaXrfuR53Ur4ENHvh5ZZqC2Ok7PLsPT1Fvm
-
--- Dumped from database version 18.4
--- Dumped by pg_dump version 18.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -565,11 +557,3 @@ ALTER TABLE ONLY public.employees
 
 ALTER TABLE ONLY public.employees
     ADD CONSTRAINT employees_department_id_fkey FOREIGN KEY (department_id) REFERENCES public.departments(department_id);
-
-
---
--- PostgreSQL database dump complete
---
-
-\unrestrict GZ10bnAAgzeBnK01zGdpO6uyTT1gWaXrfuR53Ur4ENHvh5ZZqC2Ok7PLsPT1Fvm
-
