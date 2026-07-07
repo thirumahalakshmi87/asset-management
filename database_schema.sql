@@ -195,6 +195,14 @@ CREATE TABLE public.return_reasons (
 
 ALTER TABLE public.return_reasons OWNER TO postgres;
 
+INSERT INTO public.return_reasons (reason_name)
+VALUES
+('Upgrade'),
+('Repair'),
+('Resignation'),
+('Transfer'),
+('Replacement');
+
 --
 -- Name: vendors; Type: TABLE; Schema: public; Owner: postgres
 --
