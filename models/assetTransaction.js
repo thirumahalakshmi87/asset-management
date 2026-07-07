@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
+const Asset = require('../models/asset');
 
 const AssetTransaction = sequelize.define('AssetTransaction', {
 
@@ -53,6 +54,11 @@ const AssetTransaction = sequelize.define('AssetTransaction', {
     createdAt: 'created_at',
 
     updatedAt: false
+});
+
+AssetTransaction.belongsTo(Asset, {
+    foreignKey: 'asset_id',
+    as: 'asset'
 });
 
 module.exports = AssetTransaction;

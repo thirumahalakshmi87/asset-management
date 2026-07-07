@@ -68,6 +68,11 @@ exports.returnForm = async (req, res) => {
                 where: {
                     transaction_status: 'ISSUED'
                 },
+				include: [{
+					model: Asset,
+					as: 'asset',
+					attributes: ['asset_name', 'asset_code']
+				}],
                 order: [
                     ['issue_date', 'DESC']
                 ]

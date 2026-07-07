@@ -39,7 +39,7 @@ block content
                                 option(
                                     value=transaction.transaction_id
                                 )
-                                    = transaction.asset_name
+                                    = transaction.asset.asset_code + ' - ' + transaction.asset.asset_name
 
 
                     .col-md-6.mb-3
